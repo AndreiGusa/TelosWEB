@@ -5,7 +5,7 @@ const path = require('path');
 let config = {};
 
 config.ADMIN_ENABLED = true;
-config.ADMIN_PKEY = "TLOS5WJtphnj2KfsPL3mxNqgsGcdGqwSBPpVjgPGYrJTiKsQGKrsQj";
+config.ADMIN_PKEY = "EOS5WJtphnj2KfsPL3mxNqgsGcdGqwSBPpVjgPGYrJTiKsQGKrsQj";
 
 // production mod
 config.PROD = false;

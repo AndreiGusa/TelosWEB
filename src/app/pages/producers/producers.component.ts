@@ -42,6 +42,7 @@ export class ProducersPageComponent implements OnInit, OnDestroy {
   options;
   layers = [];
   lastMapUpdate = [];
+  rotationMark:any = {};
 
   _colors:any = {
     'Active':"#00ff00",
@@ -194,6 +195,7 @@ export class ProducersPageComponent implements OnInit, OnDestroy {
   swapAndLabelProducers(data, rotation) {
     var a, b;
     var totalActive = 0, totalStandby = 0;
+    this.rotationMark = {};
     for (var index = 0; index < data.length; index++) {
       let element = data[index];
       element.index = index + 1;
@@ -205,6 +207,7 @@ export class ProducersPageComponent implements OnInit, OnDestroy {
         element.nextRotationTime = new Date(this.rotations.next_rotation_time).getTime();
         totalStandby += 1;
         this._reverseMap[element.owner] = index;
+        this.rotationMark[a+1] = true;
       } else if (element.owner === rotation.sbp_currently_in) {
       // } else if (index === rotation.sbp_in_index) {
         b = index;
@@ -212,6 +215,7 @@ export class ProducersPageComponent implements OnInit, OnDestroy {
         element.nextRotationTime = new Date(this.rotations.next_rotation_time).getTime();
         totalActive += 1;
         this._reverseMap[element.owner] = index;
+        this.rotationMark[b+1] = true;
       }
       if (!element.is_active) {
         element.label = 'Inactive';

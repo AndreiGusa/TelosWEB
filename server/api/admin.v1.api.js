@@ -1,7 +1,8 @@
 const ecc = require("eosjs-ecc");
 const async = require('async');
 const axios = require('axios');
-ecc.config.address_prefix = "TLOS";
+
+ecc.config.address_prefix = "EOS";
 
 module.exports 	= function(router, config, mongoMain) {
 

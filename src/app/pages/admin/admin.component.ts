@@ -13,7 +13,7 @@ export class AdminComponent implements OnInit {
   message: String;
 
   constructor(private http:HttpClient, private notifications:NotificationsService) {
-    ecc.config.address_prefix = 'TLOS';
+    ecc.config.address_prefix = 'EOS';
   }
 
   ngOnInit() {

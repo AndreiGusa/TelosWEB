@@ -61,11 +61,11 @@
     <ng-container matColumnDef="Status">
       <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
       <mat-cell *matCellDef="let element" class="marketcap-container">
-          <button mat-raised-button color="primary" class="status" *ngIf="element?.label === 'Active'">Active <span *ngIf="element?.index > 21" class="fa fa-sync-alt"></span></button>
-          <button mat-raised-button color="standby" class="status" *ngIf="element?.label === 'Standby'">Standby <span *ngIf="element?.index < 22" class="fa fa-sync-alt"></span></button>
+          <button mat-raised-button color="primary" class="status" *ngIf="element?.label === 'Active'">Active <span *ngIf="rotationMark[element?.index]" class="fa fa-sync-alt"></span></button>
+          <button mat-raised-button color="standby" class="status" *ngIf="element?.label === 'Standby'">Standby <span *ngIf="rotationMark[element?.index]" class="fa fa-sync-alt"></span></button>
           <button mat-raised-button color="inactive" class="status" *ngIf="element?.label === 'Inactive'">Inactive</button>
           <button mat-raised-button color="candidate" class="status" *ngIf="element?.label === 'Candidate'">Candidate</button>
-          <button mat-raised-button color="producing" class="status" *ngIf="element?.producing">Producing <span *ngIf="element?.index > 21" class="fa fa-sync-alt"></span></button>
+          <button mat-raised-button color="producing" class="status" *ngIf="element?.producing">Producing <span *ngIf="rotationMark[element?.index]" class="fa fa-sync-alt"></span></button>
        </mat-cell>
     </ng-container>
     
@@ -86,7 +86,7 @@
     <ng-container matColumnDef="Last block">
       <mat-header-cell *matHeaderCellDef> Last block </mat-header-cell>
       <mat-cell *matCellDef="let element" class="change-container"> 
-          <strong class="color-orange"><a class="color-orange" [routerLink]="['/block', element?.last_block_produced]">{{ element?.last_block_produced }}</a><span *ngIf="blockChainInfo?.head_block_num - (element?.last_block_produced || firstBlockProduced) > 252" class="fa fa-exclamation-triangle"></span></strong>
+          <strong class="color-orange"><a class="color-orange" [routerLink]="['/block', element?.last_block_produced]">{{ element?.last_block_produced }}</a><span *ngIf="element?.label === 'Active' && blockChainInfo?.head_block_num - (element?.last_block_produced || firstBlockProduced) > 252" class="fa fa-exclamation-triangle"></span></strong>
         </mat-cell>
     </ng-container>
 

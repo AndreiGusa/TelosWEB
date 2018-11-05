@@ -73,8 +73,8 @@ export class AccountCreationPageComponent implements OnInit {
     const length = value.length;
     const regex = new RegExp(/^[a-zA-Z0-9_\-]+$/);
 
-    if (value.slice(0, 4) != 'TLOS' ||
-        length != 54 ||
+    if (value.slice(0, 3) != 'EOS' ||
+        length != 53 ||
         !regex.test(value)) {
       if (!errors)
         errors = {};
